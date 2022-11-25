@@ -16,6 +16,7 @@ function Login(){
         }).then(response => response.json())
         .then(user =>{
             if( user.message == "Login success"){
+                document.cookie = `tokenidUser=${user.data.user._id}`
                 document.cookie = `tokenuser=${user.data.token}`;
                 window.location.href="http://localhost:3000/home";
             }
@@ -26,17 +27,7 @@ function Login(){
             <section className="login_box_area section_gap">
     <div className="container">
         <div className="row">
-            <div className="col-lg-6">
-                <div className="login_box_img">
-                    <img className="img-fluid" src="img/login.jpg" alt=""/>
-                    <div className="hover">
-                        <h4>New to our website?</h4>
-                        <p>There are advances being made in science and technology everyday, and a good example of this is the</p>
-                        <a className="primary-btn" href="registration.html">Create an Account</a>
-                    </div>
-                </div>
-            </div>
-            <div className="col-lg-6">
+            <div className="col-lg-12">
                 <div className="login_form_inner">
                     <h3>Log in to enter</h3>
                     <form className="row login_form"  id="contactForm" onSubmit={handleSubmit}>

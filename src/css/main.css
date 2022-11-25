@@ -1153,7 +1153,7 @@ h1, h2, h3, h4, h5, h6 {
       padding: 0; }
 
 #search_input_box {
-  position: fixed;
+  position: relative;
   left: 50%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
@@ -4749,7 +4749,8 @@ label {
   box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.07);
   height: 100%;
   text-align: center;
-  padding-top: 115px; }
+  padding-bottom: 50px;
+  padding-top: 0px; }
   .login_form_inner h3 {
     color: #222222;
     text-transform: uppercase;

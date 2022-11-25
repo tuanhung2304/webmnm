@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
+import $ from 'jquery'
 import {getCookie} from '../js/main.js'
 function ProductDetail(){
     const {id} = useParams();
@@ -23,17 +24,21 @@ function ProductDetail(){
             amount: amount
         }
         console.log(data)
-        fetch('http://localhost:5000/cart/addToCart', {
-        method: 'POST',
-        credentials: "same-origin",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-        }).then(response => response.json())
-        .then(muopden =>{
-            console.log(muopden)
-        })
+        $.ajax({
+            url: "http://localhost:5000/cart/addToCart",
+            method: "POST",
+            credentials: "include",
+            crossDomain: true,
+            xhrFields: { withCredentials: true },
+            headers: {
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Credentials": true
+            },
+            data: JSON.stringify(data),
+            async: true,
+            success: function (data) {
+                console.log(data);
+            }})
     }
     return(
         <>

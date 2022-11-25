@@ -1,27 +1,29 @@
-import ca from '../img/cart.jpg'
-import {useEffect, useState} from 'react'
 
+import {useEffect, useState} from 'react'
+import $ from 'jquery'
 function Cart(){
     const [cart, setCart] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/cart/viewCart`,{
-            credentials: "same-origin"
-        })
-        .then(res => res.json())
-        .then(cart =>{   
-            console.log(cart)
-        })
+        $.ajax({
+            url: "http://localhost:5000/cart/viewCart",
+            method: "GET",
+            credentials: "include",
+            crossDomain: true,
+            xhrFields: { withCredentials: true },
+            headers: {
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Credentials": true
+            },
+            async: true,
+            success: function (data) {
+                setCart(data.data.items)
+            },
+            error: (data) => {
+                console.log(data.responseText);
+            }})
     },[])
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/cart/deleteAllCart`,{
-    //         method : 'DELETE'
-    //     })
-    //     .then(res => res.json())
-    //     .then(cart =>{   
-    //         console.log(cart)
-    //     })
-    // },[])
+    
+    let total = 0;
     return(<section className="cart_area">
     <div className="container">
         <div className="cart_inner">
@@ -36,34 +38,41 @@ function Cart(){
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div className="media">
-                                    <div className="d-flex">
-                                        <img src={ca} alt=""/>
-                                    </div>
-                                    <div className="media-body">
-                                        <p>Minimalistic shop for multipurpose use</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <h5>$360.00</h5>
-                            </td>
-                            <td>
-                                <div className="product_count">
-                                    <input type="text" name="qty" id="sst" maxlength="12" defaultValue="1" title="Quantity:"
-                                        className="input-text qty"/>
-                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                        className="increase items-count" type="button"><i className="lnr lnr-chevron-up"></i></button>
-                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                        className="reduced items-count" type="button"><i className="lnr lnr-chevron-down"></i></button>
-                                </div>
-                            </td>
-                            <td>
-                                <h5>$720.00</h5>
-                            </td>
-                        </tr>
+                        {
+                            cart.map(index=>{
+                                let stotal = index.amount*index.product.price;
+                                total = total + stotal;
+                                return(
+                                    
+                                    <tr>
+                                        <td>
+                                            <div className="media">
+                                                <div className="d-flex">
+                                                    <img src={index.product.image} alt="" width={100} height={100}/>
+                                                </div>
+                                                <div className="media-body">
+                                                    <p>{index.product.name}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5>{index.product.price}đ</h5>
+                                        </td>
+                                        <td>
+                                            <div className="product_count">
+                                                <input type="text" name="qty" id="sst" maxlength="12" defaultValue={index.amount} title="Quantity:"
+                                                    className="input-text qty"/>
+                                                
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5>{stotal}đ</h5>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                        
                         
                         
                         <tr>
@@ -74,10 +83,10 @@ function Cart(){
 
                             </td>
                             <td>
-                                <h5>Subtotal</h5>
+                                <h5>Total</h5>
                             </td>
                             <td>
-                                <h5>$2160.00</h5>
+                                <h5>{total}đ</h5>
                             </td>
                         </tr>
                         
