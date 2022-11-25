@@ -45,7 +45,7 @@ function Login(){
                         </div>
                         <div className="col-md-12 form-group">
                             <button type="submit" value="submit" className="primary-btn">Log In</button>
-                            <a href="#">Forgot Password?</a>
+                            <a href="/requireResetPassword">Forgot Password?</a>
                         </div>
                     </form>
                 </div>
