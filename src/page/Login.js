@@ -1,3 +1,4 @@
+import {dangnhap} from '../js/main.js'
 function Login(){
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -18,6 +19,8 @@ function Login(){
             if( user.message == "Login success"){
                 document.cookie = `tokenidUser=${user.data.user._id}`
                 document.cookie = `tokenuser=${user.data.token}`;
+                dangnhap();
+                var home = document.getElementById('home')
                 window.location.href="http://localhost:3000/home";
             }
         })

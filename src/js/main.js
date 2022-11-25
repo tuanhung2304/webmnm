@@ -1,5 +1,16 @@
 import $ from 'jquery'
 
+
+export function dangnhap(){
+  var login = document.getElementById('login')
+                login.style.display="none";
+                var register = document.getElementById('register')
+                register.style.display="none";
+                var logout = document.getElementById('logout')
+                logout.style.display="block";
+}
+
+
 export function getCookie(cname) {
   var name = cname + "=";
   var ca = document.cookie.split(';');

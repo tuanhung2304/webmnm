@@ -38,6 +38,7 @@ function ProductDetail(){
             async: true,
             success: function (data) {
                 console.log(data);
+                alert('Thêm sản phẩm vào giỏ hàng thành công')
             }})
     }
     return(
@@ -63,9 +64,7 @@ function ProductDetail(){
                                 }
                                 <li></li>
                             </ul>
-                            <p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-                                something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-                                during the winter.</p>
+                            
                             <div className="product_count">
                                 <label for="qty">Quantity:</label>
                                 <input type="text" defaultValue="1" id='amount'/>

@@ -4451,6 +4451,11 @@ label {
       color: #777777;
       font-weight: normal; }
 
+
+#logout{
+  display: none;
+}
+
 .p_star {
   display: inline-block;
   position: relative; }

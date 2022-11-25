@@ -1,8 +1,11 @@
-
+import {getCookie} from '../js/main.js'
 import {useEffect, useState} from 'react'
-import $ from 'jquery'
+import trashcan from '../img/trash-can-solid.svg'
+import {Link} from 'react-router-dom'
+import $, { get } from 'jquery'
 function Cart(){
     const [cart, setCart] = useState([]);
+    const tokenuser = getCookie('tokenidUser')
     useEffect(() => {
         $.ajax({
             url: "http://localhost:5000/cart/viewCart",
@@ -22,6 +25,15 @@ function Cart(){
                 console.log(data.responseText);
             }})
     },[])
+    const oncart = (e)=>{
+        if(tokenuser == " " || tokenuser == undefined){
+            alert("Bạn cần phải đăng nhập trước khi chuyển sang bước tiếp theo")
+            window.location.href="http://localhost:3000/login";
+        }
+        else{
+            window.location.href="http://localhost:3000/checkout";
+        }
+    }
     
     let total = 0;
     return(<section className="cart_area">
@@ -35,6 +47,7 @@ function Cart(){
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
+                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,6 +81,7 @@ function Cart(){
                                         <td>
                                             <h5>{stotal}đ</h5>
                                         </td>
+                                        <td ><img src={trashcan} width={30} height={30}  /></td>
                                     </tr>
                                 )
                             })
@@ -102,8 +116,7 @@ function Cart(){
                             </td>
                             <td>
                                 <div className="checkout_btn_inner d-flex align-items-center">
-                                    <a className="gray_btn" href="#">Continue Shopping</a>
-                                    <a className="primary-btn" href="#">Proceed to checkout</a>
+                                    <a className="primary-btn" onClick={oncart}>Proceed to checkout</a>
                                 </div>
                             </td>
                         </tr>

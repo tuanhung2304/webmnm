@@ -46,35 +46,7 @@ function ProductCate(){
                             
                         </ul>
                     </div>
-                    <div className="sidebar-categories">
-                        <div className="head">Categories</div>
-                        
-                        <ul className="main-categories">
-                        {
-                            categories.map(category=>{
-                                // setSubCategories(category.subCategory)
-                                return(
-                                    <li className="main-nav-list"><a data-toggle="collapse" href="#" aria-expanded="false" aria-controls="fruitsVegetable"><span
-                                            className="lnr lnr-arrow-right"></span>{category.name}<span className="number"></span></a>
-                                        <ul className="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
-                                           {/* {
-                                            subCategories.map(subCate =>{
-                                                return(
-                                                    <li className="main-nav-list child"><a >{subCate.name}<span className="number"></span></a></li>
-                                                )
-                                            })
-                                           } */}
-                                            
-                                        </ul>
-                                    </li>
-                                )
-                            })
-                        }
-                            
-
-                            
-                        </ul>
-                    </div>
+                    
                     
                 </div>
                 <div className="col-xl-9 col-lg-8 col-md-7">
@@ -94,18 +66,6 @@ function ProductCate(){
                                                     </div>
                                                     <div className="prd-bottom">
 
-                                                        <a href="" className="social-info">
-                                                            <span className="ti-bag"></span>
-                                                            <p className="hover-text">add to bag</p>
-                                                        </a>
-                                                        <a href="" className="social-info">
-                                                            <span className="lnr lnr-heart"></span>
-                                                            <p className="hover-text">Wishlist</p>
-                                                        </a>
-                                                        <a href="" className="social-info">
-                                                            <span className="lnr lnr-sync"></span>
-                                                            <p className="hover-text">compare</p>
-                                                        </a>
                                                         <Link to={`/productdetail/${product._id}`} className="social-info">
                                                             <span className="lnr lnr-move"></span>
                                                             <p className="hover-text">view more</p>

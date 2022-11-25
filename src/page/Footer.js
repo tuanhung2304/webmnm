@@ -7,8 +7,9 @@ function Footer(){
                         <div className="single-footer-widget">
                             <h6>About Us</h6>
                             <p style={{color: "white"}}>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
-                                magna aliqua.
+                                Người thực hiện : Nguyễn Phú Hồng Loan
+                                <br/>
+                                Người tham gia : Lê Tuấn Hưng   
                             </p>
                         </div>
                     </div>
