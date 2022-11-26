@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,Link } from 'react-router-dom'
 import $ from 'jquery'
 function VerifyRegister() {
     const { token } = useParams();
@@ -14,16 +14,49 @@ function VerifyRegister() {
     }, [])
     if (response.success != undefined) {
         return (
-            <div>
-                <div> Your account is verify. </div>
-                <a href='/'><button>Go to home page</button></a>
-                <a href='/'><button>Go to login page</button></a>
+            <>
+            <div className="container">
+        <div className="row">
+            <div className="col-lg-12">
+                <div className="login_form_inner">
+                    <h3></h3>
+                    <h3>Your account is verify.</h3>
+                    <div className='loan'>
+                    <Link to={'/home'}><div className="checkout_btn_inner d-flex align-items-center">
+                                    <a className="primary-btn" >Go to home page</a>
+                                </div></Link>
+                                <Link to={'/login'}><div className="checkout_btn_inner d-flex align-items-center">
+                                    <a className="primary-btn" >Go to login page</a>
+                                </div></Link>
+                    </div>
+                    
+                </div>
             </div>
+        </div>
+    </div>
+            
+            </>
+            
         )
     } else {
         console.log(response)
         return (
-            <div>Your link verify isn't true or expired. Please try again.</div>
+            
+            <>
+             <div className="container">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <div className="login_form_inner" >
+                            <h3></h3>
+                            <div className="checkout_btn_inner d-flex align-items-center">
+                                    <Link className="primary-btn" to={'/'}>Your link verify isn't true or expired. Please try again.</Link>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            </>
         )
     }
 }

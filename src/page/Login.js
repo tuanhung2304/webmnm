@@ -32,7 +32,7 @@ function Login(){
         <div className="row">
             <div className="col-lg-12">
                 <div className="login_form_inner">
-                    <h3>Log in to enter</h3>
+                    <h3>Login</h3>
                     <form className="row login_form"  id="contactForm" onSubmit={handleSubmit}>
                         <div className="col-md-12 form-group">
                             <input type="text" className="form-control" id="username" name="name" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'"/>

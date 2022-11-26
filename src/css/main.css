@@ -76,6 +76,12 @@
 
 /* Start primary btn css
 ============================================================================================ */
+
+.loan{
+  display: flex;
+  margin-left: 30%;
+  
+}
 .primary-btn {
   position: relative;
   overflow: hidden;
